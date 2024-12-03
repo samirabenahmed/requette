@@ -1,0 +1,174 @@
+/* Conteneur principal pour gérer la disposition */
+#container {
+    display: flex;
+    background-color: #623838;
+    height: 100vh; /* Pleine hauteur pour occuper l'écran */
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Empêcher les débordements */
+    flex-wrap: wrap; /* Permet l'adaptation des enfants sur petits écrans */
+}
+
+/* Style pour la barre latérale gauche */
+#sidebar {
+    width: 300px; /* Largeur de la barre latérale */
+    background-color: #f4f4f4; /* Fond gris clair */
+    margin-top: -3%;
+    padding: 20px;
+    height: 90vh; /* Ajuster la hauteur pour correspondre à la carte */
+    display: flex; /* Activer le modèle flexbox */
+    flex-direction: column; /* Empiler les éléments verticalement */
+    justify-content: space-between; /* Espacer les éléments pour remplir la hauteur */
+    box-sizing: border-box;
+    border-right: 2px solid #333; /* Bordure pour délimiter visuellement */
+    overflow-y: auto; /* Ajouter un défilement si le contenu dépasse */
+}
+
+/* Conteneur pour les boutons Activer/Désactiver */
+#epicenter-buttons {
+    display: flex;
+    flex-direction: column; /* Les boutons sont empilés verticalement */
+    gap: 10px; /* Espacement réduit entre les boutons */
+    margin-bottom: 20px; /* Éviter qu’ils soient collés à d’autres éléments */
+}
+
+/* Style commun pour les boutons */
+#showEpicentreButton, #hideEpicentreButton {
+    padding: 10px 15px;
+    background-color: #207705; /* Par défaut : Vert pour activer */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+/* Couleur rouge spécifique au bouton Désactiver */
+#hideEpicentreButton {
+    background-color: red;
+}
+
+/* Style pour la carte */
+#map {
+    height: 90vh;  /* Hauteur alignée avec la barre latérale */
+    width: calc(100% - 320px); /* Largeur dynamique tenant compte de la sidebar */
+    border: 2px solid #333;  /* Bordure grise autour de la carte */
+    box-sizing: border-box;  /* Inclure la bordure dans les dimensions de la carte */
+    margin-top: -3%;
+    flex-grow: 1; /* Permet à la carte de s'étendre si possible */
+}
+
+/* Style pour la barre de droite */
+#right-bar {
+    display: none; /* Masquer la barre de droite par défaut */
+    width: 300px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+/* Tableau d'informations */
+#communeTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#communeTable th, #communeTable td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+#communeTable th {
+    background-color: #f2f2f2;
+}
+
+h1 {
+    text-align: center;
+    margin: 0; /* Supprime les marges pour éviter l'espace inutile */
+    padding: 0px 0; /* Ajoute un léger espacement intérieur */
+    color: #c3582d; /* Définit une couleur personnalisée pour le texte (bleu ici) */
+    font-size: 28px; /* Ajuste la taille de la police */
+    font-weight: bold; /* Rend le texte en gras */
+    background-color: #623838; /* Facultatif : ajoute un fond blanc si nécessaire */
+    line-height: 2.5;
+}
+
+/* Style pour le conteneur des contrôles */
+#controls {
+    margin-top: 0; /* Ajuster pour éviter un décalage avec la carte */
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Espacement uniforme entre les éléments */
+}
+
+/* Style pour les éléments du formulaire de contrôle */
+label {
+    display: block;
+    margin-bottom: 8px;
+}
+
+select, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 1px;
+    box-sizing: border-box;
+}
+
+/* Style pour l'option Désactiver tous les hôpitaux en rouge */
+#hospitalSelect option[value='disable'] {
+    color: rgb(238, 18, 18);
+    font-weight: bold;
+}
+
+/* Style pour l'option Activer tous les hôpitaux en vert */
+#hospitalSelect option[value='all'] {
+    color: rgb(22, 161, 22);
+    font-weight: bold;
+}
+
+/* Centrer les options de sélection des communes */
+#communeSelect {
+    margin-bottom: 10px;
+}
+
+.info-label {
+    background-color: rgba(255, 255, 255, 0.4); /* Fond blanc semi-transparent */
+    border: 1px solid #333; /* Bordure noire fine */
+    padding: 1px 1px; /* Espace intérieur */
+    border-radius: 6px; /* Coins arrondis */
+    font-size: 10px; /* Taille de la police */
+    font-family: Arial, sans-serif; /* Police lisible */
+    color: #000000; /* Couleur du texte */
+    text-align: center; /* Centrer le texte */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Effet d'ombre */
+}
+
+/* Responsiveness */
+@media screen and (max-width: 768px) {
+    #container {
+        flex-direction: column; /* Passer en disposition verticale */
+    }
+
+    #sidebar {
+        width: 100%;
+        height: auto; /* Permet une hauteur dynamique */
+    }
+
+    #map {
+        width: 100%; /* Utiliser toute la largeur disponible */
+        height: 50vh; /* Réduire la hauteur pour s'adapter à l'écran */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    #showEpicentreButton, #hideEpicentreButton {
+        font-size: 9px; /* Réduire la taille de la police pour les petits écrans */
+    }
+
+    #communeTable th, #communeTable td {
+        font-size: 12px; /* Adapter les tailles des textes du tableau */
+    }
+}

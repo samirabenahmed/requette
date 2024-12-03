@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoJSON Query Platform</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styless.css">
+    
+</head>
+<body>
+
+    <!-- Titre centré en haut de la page -->
+    <h1>Plateforme analytique et spatiale et de Séisme</h1>
+
+    <!-- Conteneur pour la carte et les barres latérales -->
+    <div id="container">
+        <!-- Barre latérale gauche avec les commandes -->
+        <div id="sidebar">
+            <div id="controls">
+                <!-- Sélecteur pour les communes -->
+                <div id="epicenter-buttons">
+                    <!-- Boutons pour afficher et désactiver l'épicentre -->
+                    <button id="showEpicentreButton">Activer l'épicentre du séisme</button>
+                    <button id="hideEpicentreButton">Désactiver l'épicentre du séisme</button>
+                </div>
+
+                <label for="communeSelect">Sélectionner une commune</label>
+                <select id="communeSelect">
+                    <option value="">Sélectionner une commune</option>
+                </select>
+
+                <label for="damageFilter">Niveau de dommage par commune : </label>
+                <select id="damageFilter">
+                    <option value="Aucun">Aucun</option>
+                    <option value="Faible">Faible</option>
+                    <option value="Modéré">Modéré</option>
+                    <option value="Élevé">Élevé</option>
+                    <option value="Critique">Critique</option>
+                    <option value="Tous">Tous</option>
+                </select>
+
+                <label for="hospitalSelect">Sélectionner un hôpital</label>
+                <select id="hospitalSelect"></select>
+
+                <label for="buildingStatusSelect">État des bâtiments :</label>
+                <select id="buildingStatusSelect">
+                    <option value="disableBuildings">Désactiver les bâtiments</option>
+                    <option value="damaged">Bâtiments touchés</option>
+                    <option value="undamaged">Bâtiments non touchés</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Carte centrée -->
+        <div id="map"></div>
+
+        <!-- Barre de droite pour les informations de la commune -->
+        <div id="right-bar">
+            <h3>Informations de la commune</h3>
+            <table id="communeTable">
+                <tbody>
+                    <tr>
+                        <th>Nom de la Commune</th>
+                        <td id="communeName">Sélectionnez une commune pour afficher les informations.</td>
+                    </tr>
+                    <tr>
+                        <th>Superficie <br> (en Km²)</th>
+                        <td id="communeSurface"></td>
+                    </tr>
+                    <tr>
+                        <th>Population</th>
+                        <td id="communePopulation"></td>
+                    </tr>
+                    <tr>
+                        <th>Bâtiments endommagés</th>
+                        <td id="communeDamagedBuildings"></td>
+                    </tr>
+                    <tr>
+                        <th>Niveau de dommage</th>
+                        <td id="communeDamageLevel"></td>
+                    </tr>
+                    <tr>
+                        <th>Nombre d'hôpitaux</th>
+                        <td id="communeHospitals"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/turf/turf.min.js"></script>
+    <script src="scriptss.js"></script>
+    
+
+</body>
+</html>
